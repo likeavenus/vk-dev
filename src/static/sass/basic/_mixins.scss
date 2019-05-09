@@ -1,0 +1,52 @@
+// Mixins.
+@mixin nl {
+  margin: 0;
+  padding: 0;
+  text-indent: 0;
+  list-style: none;
+  list-style-position: outside;
+}
+
+@mixin cf {
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+  .lt-ie8 & {
+    zoom: 1;
+  }
+}
+
+@mixin blocks-justify {
+  text-align: justify;
+  text-justify: newspaper;
+}
+
+// You can add your own mixins here:
+@mixin flex($way, $vposition, $hposition) {
+  display: flex;
+  flex-direction: $way;
+  justify-content: $vposition;
+  align-items: $hposition;
+}
+
+//@mixin phone() {
+//    @media screen and (max-width: 320px) {
+//        @content;
+//    }
+//}
+@mixin tablet() {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop() {
+  @media screen and (min-width: 1240px) {
+    @content;
+  }
+}

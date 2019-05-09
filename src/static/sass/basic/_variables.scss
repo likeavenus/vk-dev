@@ -1,0 +1,18 @@
+// File for scss-vars.
+// For example: main colors, paddings and so on.
+// Basic <body> styles 
+$basicFontFamily: $CustomFont; // Берем нужный шрифт из переменной в fonts.scss
+$basicFontSize: 14px; // Базовый размер шрифта
+$basicLineHeight: 1.2;
+// Screen sizes
+$mobile: 320px;
+$iphone: 375px;
+$tablet: 768px;
+$laptop: 1260px;
+$desktop: 1920px;
+// Colors
+$black: #000;
+$white: #fff;
+$firstColor: #000;
+$secondColor: #000;
+$thirdColor: #000;

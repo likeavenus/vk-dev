@@ -1,0 +1,16 @@
+@import "src/static/sass/basic/common";
+.container {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  width: $mobile;
+  @media (min-width: $iphone) {
+    width: $iphone;
+  }
+  @media (min-width: $tablet) {
+    width: $tablet;
+  }
+  @media (min-width: $laptop) {
+    width: $laptop;
+  }
+}

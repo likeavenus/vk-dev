@@ -1,0 +1,58 @@
+// Border-box на html и все остальные элементы наследуют свойство.
+// Позволяет добавить элемент с другим box-sizing.
+html {
+  height: 100%; // min-height: 100%;
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.page {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: $basicFontFamily;
+  font-size: $basicFontSize; // Базовый размер шрифта
+  line-height: $basicLineHeight;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.page__wrapper {
+  // height: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  min-width: $mobile;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}

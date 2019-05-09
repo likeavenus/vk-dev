@@ -1,0 +1,15 @@
+mixin taskDesk(data)
+    div.taskDesk
+        button(type="button").taskDesk_delete.js-del-column
+        .taskDesk_box
+            h3.taskDesk_title
+            ul.task_list
+                //li.task_item Пройти курс по React
+            form.taskDesk_add_box.emptyArea
+                button(type="button").taskDesk_button_add.add_task.js-add-card Добавить еще одну карточку
+                button(type="button").taskDesk_button_add.add_title.js-add-column Добавить еще одну колонку
+                textarea(name="area" placeholder="Введите название карточки").taskDesk_area.js-task-area
+                button(type="button").taskDesk_button_save Добавить карточку
+                button(type="button").taskDesk_button_close.js-close
+                input(type="text" name="title" placeholder="Добавить заголовок").taskDesk_input.js-task-input
+                button(type="button").taskDesk_save_title.js-save-title Сохранить заголовок

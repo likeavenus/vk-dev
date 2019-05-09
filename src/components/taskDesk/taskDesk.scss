@@ -1,0 +1,293 @@
+.taskDesk {
+  display: block;
+  width: 272px;
+  min-height: 43px;
+  max-height: 614px;
+  height: 43px;
+  background: #DFE3E6;
+  border-radius: 3px;
+  position: relative;
+  //overflow: auto;
+  margin-right: 12px;
+  margin-bottom: 20px;
+
+  &.active {
+    height: auto;
+
+    & .taskDesk_title {
+      margin-bottom: 12px;
+    }
+
+    & .add_title {
+      margin-bottom: 8px;
+    }
+
+    & .taskDesk_box {
+      justify-content: center;
+    }
+
+    & .task_list {
+      height: 100%;
+    }
+  }
+}
+
+.taskDesk_delete {
+  display: none;
+  width: 12px;
+  height: 12px;
+  //display: inline-block;
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  background: url("../img/taskDesk/cross.svg") no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0s;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.taskDesk_box {
+  padding: 8px 12px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.taskDesk_title {
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 19px;
+  word-wrap: break-word;
+
+  .inactive {
+    display: none;
+  }
+}
+
+.task_list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 0;
+  overflow: visible;
+  position: relative;
+}
+
+.task_item {
+  background: #fff;
+  box-shadow: 0px 1px 4px rgba(9, 45, 66, 0.25);
+  border-radius: 3px;
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  line-height: 19px;
+  font-family: $CustomFont;
+  word-wrap: break-word;
+  z-index: 100;
+}
+
+.taskDesk_add_box {
+  width: 100%;
+  background: #DFE3E6;
+  border-radius: 3px;
+  position: relative;
+
+  &.active {
+    & .taskDesk_area {
+      display: block;
+      height: auto;
+    }
+
+    & .taskDesk_button_save {
+      display: flex;
+    }
+
+    & .taskDesk_button_close {
+      opacity: 1;
+      z-index: 10;
+    }
+
+    & .add_task {
+      display: none;
+    }
+  }
+
+  &.emptyArea {
+    & .taskDesk_button_save {
+      background-color: #bbb;
+      pointer-events: none;
+    }
+  }
+
+  &.addColumn {
+    & .add_title {
+      display: block;
+    }
+
+    & .add_task {
+      display: none;
+    }
+
+    & .taskDesk_input.active {
+      display: block;
+    }
+
+    & .taskDesk_save_title.active {
+      display: flex;
+    }
+  }
+
+  & .taskDesk_save_title.emptyInput {
+    background: #39C071;
+    pointer-events: auto;
+  }
+}
+
+.taskDesk_button_add {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: #6B808C;
+  font-size: 13px;
+  line-height: 19px;
+  transition: all .3s ease;
+  cursor: pointer;
+  
+  &:hover,
+  &:active,
+  &:focus {
+    color: #000;
+  }
+  
+
+  &:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    background: url("../img/taskDesk/add.svg") no-repeat center;
+    background-size: contain;
+    margin-right: 8px;
+  }
+}
+
+.taskDesk_area {
+  display: none;
+  font-size: 13px;
+  line-height: 19px;
+  resize: vertical;
+  width: 100%;
+  height: 0;
+  padding: 8px 12px;
+  box-shadow: 0px 1px 4px rgba(9, 45, 66, 0.25);
+  border-radius: 3px;
+  font-family: $CustomFont;
+  margin-bottom: 8px;
+  transition: all .3s ease;
+}
+
+.taskDesk_input {
+  display: none;
+  width: 100%;
+  padding: 4px 12px;
+  box-shadow: 0px 1px 4px rgba(9, 45, 66, 0.25);
+  border-radius: 3px;
+  font-family: $CustomFont;
+  border: none;
+  margin-bottom: 8px;
+}
+
+.taskDesk_button_save {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 152px;
+  height: 30px;
+  background: #39C071;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 19px;
+  color: #fff;
+  transition: all .2s ease;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: #45c04f;
+  }
+}
+
+.taskDesk_button_close {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  position: absolute;
+  bottom: 9px;
+  right: 0;
+  background: url("../img/taskDesk/cross.svg") no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+  opacity: 0;
+  z-index: -10;
+  transition: all 0s;
+}
+
+.add_title {
+  display: none;
+}
+
+.taskDesk_save_title {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 152px;
+  height: 30px;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 19px;
+  color: #fff;
+  transition: all .2s ease;
+  pointer-events: none;
+  background: #bbb;
+}

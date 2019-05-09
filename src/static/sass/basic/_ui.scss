@@ -1,0 +1,95 @@
+// GUI stylies of the project
+// For example, styles of the links, buttons and so on.
+a {
+  font: inherit;
+  color: $black;
+  $colorForLinkEffects: $black;
+  border: none;
+  outline: none;
+  transition: 0.3s;
+  &:hover {
+    //color: $colorForLinkEffects;
+  }
+  &:active {
+    //color: $colorForLinkEffects;
+  }
+  &:focus {
+    //color: $colorForLinkEffects;
+  }
+}
+
+button {
+  font: inherit;
+  color: $black;
+  $colorForButtonsEffects: $black;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: none;
+  transition: 0.3s;
+  &:hover {
+    //color: $colorForButtonsEffects;
+  }
+  &:active {
+    //color: $colorForButtonsEffects;
+  }
+  &:focus {
+    //color: $colorForButtonsEffects;
+  }
+}
+
+// Стили для чекбоксов и радиокнопок
+// Для работы кладем i после кнопки внутрь label
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]+i {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  width: 21px;
+  height: 20px;
+  background-color: $firstColor;
+}
+
+input[type="checkbox"]:checked+i::after {
+  content: "";
+  display: block;
+  width: 9px;
+  height: 6px;
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  border-left: 2px solid $white;
+  border-bottom: 2px solid $white;
+  transform: rotate(-45deg);
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]+i {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  width: 21px;
+  height: 21px;
+  background-color: $white;
+  border-radius: 50%;
+}
+
+input[type="radio"]:checked+i::after {
+  content: "";
+  display: block;
+  width: 9px;
+  height: 9px;
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background-color: $firstColor;
+  border-radius: 50%;
+}
