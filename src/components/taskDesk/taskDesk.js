@@ -75,13 +75,29 @@ export default function taskDesk() {
     //     e.target.closest('.taskDesk').querySelector('.js-task-input').classList.remove('active');
     // };
 
-    const dragAndDrop = (e) => {
+    const dragAndDrop = e => {
         e.preventDefault();
+
+        const findPos = obj => {
+            let curleft =  0;
+            let curtop = 0;
+            if (obj.offsetParent) {
+                do {
+                    curleft += obj.offsetLeft;
+                    curtop += obj.offsetTop;
+                } while (obj = obj.offsetParent);
+                return { x: curleft, y: curtop };
+            }
+        };
+        let posY = findPos(e.target).y;
+
+
         let startCoords = {
             x: e.clientX,
-            y: e.clientY
+            y: e.clientY - posY + 60
         };
-        function onMouseMove(moveEvt) {
+
+        const onMouseMove = moveEvt => {
             moveEvt.preventDefault();
 
             let shift = {
@@ -93,14 +109,18 @@ export default function taskDesk() {
                 x: moveEvt.clientX,
                 y: moveEvt.clientY
             };
+
+
             e.target.style.position = 'absolute';
-            e.target.style.top = (e.target.offsetTop - shift.y) + 'px';
             e.target.style.left = (e.target.offsetLeft - shift.x) + 'px';
+            e.target.style.top = (e.target.offsetTop - shift.y) + 'px';
             e.target.style.pointerEvents = 'none';
             e.target.style.zIndex = 10000;
-        }
 
-        const onMouseUp = function (upEvt) {
+
+        };
+
+        const onMouseUp = upEvt => {
             upEvt.preventDefault();
             e.target.style.position = 'static';
             e.target.style.top = 0;
@@ -111,10 +131,13 @@ export default function taskDesk() {
             const clonedTask = e.target.cloneNode(true);
             const thisTask = e.target;
             const onElem = document.elementFromPoint(upEvt.clientX, upEvt.clientY);
+            console.log(onElem);
+            if (!onElem.classList.contains('deskWrapper')) {
+                onElem.closest('.taskDesk').querySelector('.task_list').appendChild(clonedTask);
+                thisTask.remove();
+            }
 
-            onElem.closest('.taskDesk').querySelector('.task_list').appendChild(clonedTask);
 
-            thisTask.remove();
 
             document.removeEventListener('mousemove', onMouseMove);
             document.removeEventListener('mouseup', onMouseUp);
