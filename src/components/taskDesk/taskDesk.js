@@ -5,7 +5,6 @@ export default function taskDesk() {
     const taskAddBox = document.querySelectorAll('.taskDesk_add_box');
 
     const buttonAdd = document.querySelectorAll('.js-add-card');
-    const buttonClose = document.querySelectorAll('.js-close');
     const buttonSave = document.querySelectorAll('.taskDesk_button_save');
     const buttonAddTitle = document.querySelectorAll('.js-add-column');
     const buttonSaveTitle = document.querySelectorAll('.js-save-title');
@@ -68,13 +67,6 @@ export default function taskDesk() {
         e.target.form.classList.add('active');
     };
 
-    // const handleClearColumn = (e) => {
-    //     e.target.closest('.taskDesk').classList.remove('active');
-    //     e.target.closest('.taskDesk').querySelector('.taskDesk_add_box').classList.remove('active');
-    //     e.target.closest('.taskDesk').querySelector('.taskDesk_add_box').classList.remove('addColumn');
-    //     e.target.closest('.taskDesk').querySelector('.js-task-input').classList.remove('active');
-    // };
-
     const dragAndDrop = e => {
         e.preventDefault();
 
@@ -115,7 +107,13 @@ export default function taskDesk() {
             e.target.style.left = (e.target.offsetLeft - shift.x) + 'px';
             e.target.style.top = (e.target.offsetTop - shift.y) + 'px';
             e.target.style.pointerEvents = 'none';
+            e.target.style.opacity = 0.6;
+            e.target.style.overflow = 'hidden';
             e.target.style.zIndex = 10000;
+
+            e.target.closest('.task_list').style.overflow = "visible";
+            e.target.closest('.taskDesk_box').style.overflow = "visible";
+            e.target.closest('.taskDesk').style.overflow = "visible";
 
 
         };
@@ -126,13 +124,19 @@ export default function taskDesk() {
             e.target.style.top = 0;
             e.target.style.left = 0;
             e.target.style.pointerEvents = 'auto';
+            e.target.style.opacity = 1;
+            e.target.style.overflow = 'auto';
             e.target.style.zIndex = 1000;
+
+            e.target.closest('.task_list').style.overflow = "auto";
+            e.target.closest('.taskDesk_box').style.overflow = "auto";
+            e.target.closest('.taskDesk').style.overflow = "auto";
 
             const clonedTask = e.target.cloneNode(true);
             const thisTask = e.target;
             const onElem = document.elementFromPoint(upEvt.clientX, upEvt.clientY);
             console.log(onElem);
-            if (!onElem.classList.contains('deskWrapper')) {
+            if (!onElem.classList.contains('deskWrapper') && onElem.closest('.taskDesk').querySelector('.taskDesk_add_box').classList.contains('active')) {
                 onElem.closest('.taskDesk').querySelector('.task_list').appendChild(clonedTask);
                 thisTask.remove();
             }
@@ -192,7 +196,6 @@ export default function taskDesk() {
         newArea.addEventListener('input', handleCheckArea);
         newSaveTitleButton.addEventListener('click', addNewDesk);
 
-        // clearColumnButton.addEventListener('click', handleClearColumn);
     };
 
     const addNewDesk = (e) => { // функция копирования и добавления доски из template
