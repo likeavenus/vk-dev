@@ -130,6 +130,7 @@
   max-height: 100px;
   min-height: 35px;
   overflow: auto;
+  position: static;
 }
 
 .taskDesk_add_box {
@@ -218,6 +219,10 @@
   }
 }
 
+
+.add_task {
+  padding-top: 12px;
+}
 .taskDesk_area {
   display: none;
   font-size: 13px;

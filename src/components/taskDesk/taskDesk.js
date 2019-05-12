@@ -8,7 +8,6 @@ export default function taskDesk() {
     const buttonSave = document.querySelectorAll('.taskDesk_button_save');
     const buttonAddTitle = document.querySelectorAll('.js-add-column');
     const buttonSaveTitle = document.querySelectorAll('.js-save-title');
-    const buttonDeleteColumn = document.querySelectorAll('.js-del-column');
 
     const taskArea = document.querySelectorAll('.js-task-area');
     const taskInput = document.querySelectorAll('.js-task-input');
@@ -81,13 +80,15 @@ export default function taskDesk() {
                 return { x: curleft, y: curtop };
             }
         };
-        let posY = findPos(e.target).y;
 
+        let posY = findPos(e.target).y;
 
         let startCoords = {
             x: e.clientX,
             y: e.clientY - posY + 60
         };
+
+        console.log(posY);
 
         const onMouseMove = moveEvt => {
             moveEvt.preventDefault();
@@ -103,6 +104,7 @@ export default function taskDesk() {
             };
 
 
+
             e.target.style.position = 'absolute';
             e.target.style.left = (e.target.offsetLeft - shift.x) + 'px';
             e.target.style.top = (e.target.offsetTop - shift.y) + 'px';
@@ -114,8 +116,6 @@ export default function taskDesk() {
             e.target.closest('.task_list').style.overflow = "visible";
             e.target.closest('.taskDesk_box').style.overflow = "visible";
             e.target.closest('.taskDesk').style.overflow = "visible";
-
-
         };
 
         const onMouseUp = upEvt => {
@@ -140,8 +140,6 @@ export default function taskDesk() {
                 onElem.closest('.taskDesk').querySelector('.task_list').appendChild(clonedTask);
                 thisTask.remove();
             }
-
-
 
             document.removeEventListener('mousemove', onMouseMove);
             document.removeEventListener('mouseup', onMouseUp);

@@ -1,7 +1,8 @@
 .deskWrapper {
   background: url("../img/deskWrapper/background.jpg") no-repeat center;
+  background-attachment: fixed;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
   padding: 21px 20px;
   display: flex;
   flex-direction: row;
